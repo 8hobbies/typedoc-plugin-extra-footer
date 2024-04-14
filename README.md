@@ -40,7 +40,17 @@ of the extra footer there (can be HTML):
 }
 ```
 
-By default, the extra footer is wrapped by `<p class="tsd-generator extra-footer"></p>`.
+By default, the extra footer is wrapped by `<p class="tsd-generator extra-footer"></p>`. If you
+prefer to have full control of the footer without the wrapper, you can specify
+
+```json
+{
+  "extraFooterNoDefaultWrapper": true,
+  "hideGenerator": true
+}
+```
+
+In this case, setting [`hideGenerator`][] is recommended but not mandatory.
 
 ## Live Example
 
@@ -76,6 +86,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+[`hideGenerator`]: https://typedoc.org/options/output/#hidegenerator
 [GitHub]: https://github.com/8hobbies/typedoc-plugin-extra-footer
 [TypeDoc]: https://typedoc.org/
 [issue tracker]: https://github.com/8hobbies/typedoc-plugin-extra-header/issues

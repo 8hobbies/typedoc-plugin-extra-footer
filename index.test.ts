@@ -34,6 +34,8 @@ describe("All", () => {
     "modules.html",
     "functions/func.html",
   ] as const;
+  // Default extra footer class name.
+  const defaultExtraFooterClass = "extra-footer" as const;
   // Package version number.
   const packageJson: unknown = JSON.parse(
     fs.readFileSync("package.json", "utf-8"),
@@ -84,7 +86,10 @@ describe("All", () => {
 
   // Prepare the directory, run `npm install` and run typedoc.
   function runTypedoc(
-    typedocConfig: typeof minTypedocConfig & { extraFooter?: string },
+    typedocConfig: typeof minTypedocConfig & {
+      extraFooter?: string;
+      extraFooterNoDefaultWrapper?: boolean;
+    },
   ): void {
     fs.writeFileSync(
       path.join(testDir, "typedoc.json"),
@@ -110,7 +115,9 @@ describe("All", () => {
     runTypedoc(minTypedocConfig);
     const htmlPaths = htmlNames.map((elem) => path.join(testDir, "docs", elem));
     for (const htmlPath of htmlPaths) {
-      expect(fs.readFileSync(htmlPath, "utf-8")).not.toContain("extra-footer");
+      expect(fs.readFileSync(htmlPath, "utf-8")).not.toContain(
+        defaultExtraFooterClass,
+      );
     }
   });
 
@@ -125,9 +132,35 @@ describe("All", () => {
     for (const htmlPath of htmlPaths) {
       const dom = await JSDOM.fromFile(htmlPath, { contentType: "text/html" });
       const footer = dom.window.document.getElementsByTagName("footer")[0];
-      const extraFooter = footer.getElementsByClassName("extra-footer");
+      const extraFooter = footer.getElementsByClassName(
+        defaultExtraFooterClass,
+      );
       expect(extraFooter).toHaveLength(1);
       expect(extraFooter[0].innerHTML).toBe(typedocConfig.extraFooter);
+    }
+  });
+
+  test("When extraFooterNoDefaultWrapper is specified, generates extra footer without the wrapper", async () => {
+    const innerContent = "Great <strong>footer</strong>" as const;
+    const extraFooterClassName = "custom-extra-footer" as const;
+    const typedocConfig = {
+      ...minTypedocConfig,
+      extraFooter: `<div class="${extraFooterClassName}">${innerContent}</div>`,
+      extraFooterNoDefaultWrapper: true,
+    } as const;
+
+    runTypedoc(typedocConfig);
+    const htmlPaths = htmlNames.map((elem) => path.join(testDir, "docs", elem));
+    for (const htmlPath of htmlPaths) {
+      const dom = await JSDOM.fromFile(htmlPath, { contentType: "text/html" });
+      const footer = dom.window.document.getElementsByTagName("footer")[0];
+      const defaultExtraFooter = footer.getElementsByClassName(
+        defaultExtraFooterClass,
+      );
+      expect(defaultExtraFooter).toHaveLength(0);
+      const extraFooter = footer.getElementsByClassName(extraFooterClassName);
+      expect(extraFooter).toHaveLength(1);
+      expect(extraFooter[0].innerHTML).toBe(innerContent);
     }
   });
 });

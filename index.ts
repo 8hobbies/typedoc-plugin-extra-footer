@@ -18,6 +18,7 @@
 import { Application, JSX, ParameterType } from "typedoc";
 
 const optionName = "extraFooter" as const;
+const noDefaultWrapperOptionName = "extraFooterNoDefaultWrapper" as const;
 
 /** @ignore */
 export function load(application: Application): void {
@@ -26,6 +27,13 @@ export function load(application: Application): void {
     type: ParameterType.String,
     help: "Extra footer in the generated doc. Can be HTML.",
   });
+  application.options.addDeclaration({
+    name: noDefaultWrapperOptionName,
+    type: ParameterType.Boolean,
+    help: `Do not add default an extra wrapper around the content specified in ${optionName}`,
+    defaultValue: false,
+  });
+
   application.renderer.hooks.on("footer.end", (ctx) => {
     const extraFooter = ctx.options.getValue(optionName);
     if (typeof extraFooter !== "string") {
@@ -38,12 +46,18 @@ export function load(application: Application): void {
       return JSX.createElement(JSX.Fragment, {});
     }
 
-    return JSX.createElement(
-      "p",
-      {
-        class: "tsd-generator extra-footer",
-      },
-      JSX.createElement(JSX.Raw, { html: extraFooter }),
-    );
+    const specifiedElement = JSX.createElement(JSX.Raw, { html: extraFooter });
+
+    if (ctx.options.getValue(noDefaultWrapperOptionName)) {
+      return specifiedElement;
+    } else {
+      return JSX.createElement(
+        "p",
+        {
+          class: "tsd-generator extra-footer",
+        },
+        specifiedElement,
+      );
+    }
   });
 }
