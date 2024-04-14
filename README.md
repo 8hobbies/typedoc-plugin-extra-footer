@@ -36,7 +36,7 @@ of the extra footer there (can be HTML):
 
 ```json
 {
-  "extraFooter": "&copy; [year] <a href="https://example.com/">My Name</a>"
+  "extraFooter": "&copy; [year] <a href=\"https://example.com/\">My Name</a>"
 }
 ```
 
