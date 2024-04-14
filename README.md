@@ -42,6 +42,11 @@ of the extra footer there (can be HTML):
 
 By default, the extra footer is wrapped by `<p class="tsd-generator extra-footer"></p>`.
 
+## Live Example
+
+[The document of this plugin](https://typedoc-plugin-extra-footer.8hob.io) itself is a live example.
+Check out the footer on the page.
+
 ## Contributing
 
 Source code is available on [GitHub][].
