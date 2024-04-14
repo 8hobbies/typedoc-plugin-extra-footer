@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Runtime
+name: Lint
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -42,6 +42,6 @@ jobs:
         run: |
           npm install
 
-      - name: Build
+      - name: Lint
         run: |
-          npm test
+          npm run lint
