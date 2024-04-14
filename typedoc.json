@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./index.ts"],
+  "sitemapBaseUrl": "https://typedoc-extra-footer.8hob.io",
+  "plugin": [
+    "@8hobbies/typedoc-plugin-404",
+    "@8hobbies/typedoc-plugin-plausible",
+    "./dist/index.js"
+  ],
+  "extraFooter": "&copy; 2024 <a href=\"https://8hob.io\">8 Hobbies, LLC</a>",
+  "plausibleSiteDomain": "oss.8hob.io"
+}

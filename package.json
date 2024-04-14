@@ -1,0 +1,58 @@
+{
+  "name": "typedoc-plugin-extra-footer",
+  "version": "1.0.0",
+  "description": "Add extra footer to TypeDoc-generated docs.",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist",
+    "!/dist/**.test.d.ts",
+    "!/dist/**.test.js",
+    "!/dist/vitest.config.d.ts",
+    "!/dist/vitest.config.js"
+  ],
+  "engines": {
+    "node": "^18 || ^20 || >=21"
+  },
+  "scripts": {
+    "clean": "rimraf dist/",
+    "compile": "tsc --project tsconfig.json && tsc --project tsconfig.test.json",
+    "doc": "npm run compile && typedoc && replace-in-files --string '=\"assets/' --replacement '=\"/assets/' docs/404.html",
+    "format": "eslint --fix *.ts *.mjs && prettier . --write",
+    "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . --check",
+    "prepack": "npm run clean && npm run compile",
+    "test": "npm run compile && vitest --run",
+    "test-all": "npm run compile && npm run lint && npm run test && npm run doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8hobbies/typedoc-plugin-extra-footer.git"
+  },
+  "keywords": [
+    "typedoc-plugin"
+  ],
+  "author": "8 Hobbies, LLC",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/8hobbies/typedoc-plugin-extra-footer/issues"
+  },
+  "homepage": "https://typedoc-extra-footer.8hob.io",
+  "devDependencies": {
+    "@8hobbies/eslint-conf-baseline": "^2.1.0",
+    "@8hobbies/typedoc-plugin-404": "^2.0.2",
+    "@8hobbies/typedoc-plugin-plausible": "^1.0.2",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.12.5",
+    "globals": "^15.0.0",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.2.5",
+    "replace-in-files-cli": "^2.2.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.4.4",
+    "vitest": "^1.4.0"
+  },
+  "peerDependencies": {
+    "typedoc": "^0.25.13"
+  }
+}
