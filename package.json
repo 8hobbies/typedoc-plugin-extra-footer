@@ -1,6 +1,6 @@
 {
   "name": "typedoc-plugin-extra-footer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add extra footer to TypeDoc-generated docs.",
   "main": "dist/index.js",
   "type": "module",
