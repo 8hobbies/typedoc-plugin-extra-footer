@@ -24,24 +24,36 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         node-version: [18.x, 20.x, 21.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        exclude:
+          # Only test Node 20 on Windows and MacOS
+          - os: macos-latest
+            node-version: 18.x
+          - os: macos-latest
+            node-version: 21.x
+          - os: windows-latest
+            node-version: 18.x
+          - os: windows-latest
+            node-version: 21.x
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
       - name: Install Dependencies
         run: |
           npm install
 
-      - name: Build
+      - name: Test
         run: |
           npm test
