@@ -55,7 +55,7 @@ In this case, setting [`hideGenerator`][] is recommended but not mandatory.
 
 ## Live Example
 
-[The document of this plugin](https://typedoc-plugin-extra-footer.8hob.io) itself is a live example.
+[The document of this plugin](https://typedoc-extra-footer.8hob.io) itself is a live example.
 Check out the footer on the page.
 
 ## Contributing
