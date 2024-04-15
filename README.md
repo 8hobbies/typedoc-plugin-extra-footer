@@ -1,6 +1,7 @@
 # typedoc-plugin-extra-footer: Add Extra Footer to TypeDoc-Generated Docs
 
 [![npm version](https://badge.fury.io/js/typedoc-plugin-extra-footer.svg)](https://badge.fury.io/js/typedoc-plugin-extra-footer)
+[![Pipeline](https://github.com/8hobbies/typedoc-plugin-extra-footer/actions/workflows/runtime.yml/badge.svg)](https://github.com/8hobbies/typedoc-plugin-extra-footer/actions/workflows/runtime.yml)
 
 [GitHub](https://github.com/8hobbies/typedoc-plugin-extra-footer) | [GitLab](https://gitlab.com/8hobbies/typedoc-plugin-extra-footer)
 
