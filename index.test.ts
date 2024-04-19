@@ -20,8 +20,8 @@ import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
 
-const npmExec = process.platform === "win32" ? "npm.cmd" : "npm";
-const npxExec = process.platform === "win32" ? "npx.cmd" : "npx";
+const npmExec = "npm" as const;
+const npxExec = "npx" as const;
 
 describe("All", () => {
   // Dir that contains files used for test.
@@ -95,19 +95,22 @@ describe("All", () => {
       path.join(testDir, "typedoc.json"),
       JSON.stringify(typedocConfig),
     );
-    spawnSyncWithError(npmExec, ["pack"]);
+    spawnSyncWithError(npmExec, ["pack"], { shell: true });
     spawnSyncWithError(npmExec, ["install"], {
       cwd: testDir,
+      shell: true,
     });
     spawnSyncWithError(
       npmExec,
       ["install", `../typedoc-plugin-extra-footer-${packageVersion}.tgz`],
       {
         cwd: testDir,
+        shell: true,
       },
     );
     spawnSyncWithError(npxExec, ["typedoc"], {
       cwd: testDir,
+      shell: true,
     });
   }
 
