@@ -24,6 +24,7 @@ on:
 
 jobs:
   test:
+    name: Runtime
     runs-on: ${{ matrix.os }}
 
     strategy:

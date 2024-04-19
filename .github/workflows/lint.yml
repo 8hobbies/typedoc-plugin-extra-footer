@@ -24,6 +24,7 @@ on:
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     strategy:

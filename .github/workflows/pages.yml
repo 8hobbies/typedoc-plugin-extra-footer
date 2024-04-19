@@ -24,6 +24,7 @@ on:
 
 jobs:
   build:
+    name: Build Pages
     runs-on: ubuntu-latest
 
     strategy:
@@ -53,6 +54,7 @@ jobs:
           path: docs
 
   deploy:
+    name: Deploy Pages
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     permissions:
