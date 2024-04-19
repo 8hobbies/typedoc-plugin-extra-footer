@@ -38,6 +38,14 @@ of the extra footer there (can be HTML):
 
 ```json
 {
+  "extraFooter": "My Extra Footer"
+}
+```
+
+This can be a copyright footer:
+
+```json
+{
   "extraFooter": "&copy; [year] <a href=\"https://example.com/\">My Name</a>"
 }
 ```
