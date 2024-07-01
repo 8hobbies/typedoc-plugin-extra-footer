@@ -16,7 +16,7 @@
       "allowedVersions": "<0.26.0"
     },
     {
-      "matchPackageNames": ["typedoc-plugin-plausible"],
+      "matchPackageNames": ["@8hobbies/typedoc-plugin-plausible"],
       "allowedVersions": "<2.0.0"
     }
   ]
