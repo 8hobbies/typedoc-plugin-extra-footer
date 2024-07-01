@@ -41,7 +41,7 @@
   "devDependencies": {
     "@8hobbies/eslint-conf-baseline": "^2.1.1",
     "@8hobbies/typedoc-plugin-404": "^2.3.0",
-    "@8hobbies/typedoc-plugin-plausible": "^1.1.0",
+    "@8hobbies/typedoc-plugin-plausible": "^2.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.14.9",
     "globals": "^15.6.0",
