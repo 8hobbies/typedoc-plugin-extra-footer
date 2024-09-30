@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["gitlab>8hobbies/renovate-config#v3"],
-  "schedule": ["on Monday"],
+  "extends": ["gitlab>8hobbies/renovate-config#v5"],
+  "schedule": ["on Sunday"],
   "packageRules": [
     {
       "matchPackageNames": ["@8hobbies/typedoc-plugin-404"],
