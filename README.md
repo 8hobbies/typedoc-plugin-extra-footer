@@ -107,7 +107,7 @@ limitations under the License.
 [GitHub]: https://github.com/8hobbies/typedoc-plugin-extra-footer
 [MDN footer doc]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
 [TypeDoc]: https://typedoc.org/
-[issue tracker]: https://github.com/8hobbies/typedoc-plugin-extra-header/issues
-[pull request]: https://github.com/8hobbies/typedoc-plugin-extra-header/pulls
+[issue tracker]: https://github.com/8hobbies/typedoc-plugin-extra-footer/issues
+[pull request]: https://github.com/8hobbies/typedoc-plugin-extra-footer/pulls
 [customFooterHtml]: https://typedoc.org/options/output/#customfooterhtml
 [customFooterHtmlDisableWrapper]: https://typedoc.org/options/output/#customfooterhtmldisablewrapper
