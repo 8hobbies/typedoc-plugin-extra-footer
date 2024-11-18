@@ -39,7 +39,7 @@
   },
   "homepage": "https://typedoc-extra-footer.8hob.io",
   "devDependencies": {
-    "@8hobbies/eslint-conf-baseline": "^5.0.0",
+    "@8hobbies/eslint-conf-baseline": "^6.0.0",
     "@8hobbies/typedoc-plugin-404": "^2.3.0",
     "@8hobbies/typedoc-plugin-plausible": "^1.1.0",
     "@types/jsdom": "^21.1.7",
